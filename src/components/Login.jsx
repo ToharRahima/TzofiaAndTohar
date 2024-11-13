@@ -1,15 +1,3 @@
-<<<<<<< HEAD
-import React from "react";
-
-function Login(){
-
-return(
-    <>
-    </>
-)
-}
-export default Login
-=======
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { Link, Route,Routes, useNavigate } from 'react-router-dom'
@@ -125,4 +113,3 @@ function Login() {
     )
 }
 export default Login;
->>>>>>> 8f1ffb165ffa48c516f798962200ba262afaf64a
