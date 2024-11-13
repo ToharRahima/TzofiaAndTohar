@@ -1,7 +1,12 @@
 import React from "react";
-function Home(){
-    return(
-        <h1>Home</h1>
+import Navber from "./Navber";
+
+function Home() {
+    return (
+        <>
+            <h1>Home</h1>
+            <Navber />
+        </>
     )
 }
 export default Home;

@@ -1,14 +1,13 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
-// import Home from './Home'
 import { Link, Route,Routes, useNavigate } from 'react-router-dom'
 
 
 function Login() {
-    const [isExist,setisExist]=useState()
+    const [isExist,setisExist]=useState(false)
     const [inputs, setInputs] = useState({});
     const [usersArr,setusersArr]=useState([]);
-    const navigete= useNavigate();
+    const navigate= useNavigate();
     
     function SetInLS(user){
         let inArr=false;
@@ -20,7 +19,9 @@ function Login() {
                 }
             }
             if(!inArr){
-                localStorage.setItem("logedUsers",JSON.stringify(logedUsers.push(user)))
+                logedUsers.push(user); 
+                localStorage.setItem("logedUsers", JSON.stringify(logedUsers)); 
+                // localStorage.setItem("logedUsers",JSON.stringify(logedUsers.push(user)))
             }
         } else{
             localStorage.setItem("logedUsers",JSON.stringify([user]))
@@ -40,11 +41,11 @@ function Login() {
         (async ()=> await fetchItem())();
     },[])
 
-    useEffect(()=>{
-        if(isExist){
-            navigete("/home")
-        }
-    },[])
+    // useEffect(()=>{
+    //     if(isExist){
+    //         navigate('/home', { replace: true })
+    //     }
+    // },[])
 
     const handleChange = (event) => {
         const name = event.target.name;
@@ -53,6 +54,7 @@ function Login() {
     }
 
       function handleSubmit(event){
+        let insert=false;
         event.preventDefault();
         for(let i=0;i<usersArr.length;i++){
             if((inputs.username==usersArr[i].username) && (inputs.password==usersArr[i].website)){
@@ -60,11 +62,13 @@ function Login() {
                 localStorage.setItem("currentUser",JSON.stringify(usersArr[i]))
                 alert("hi "+ inputs.username )
                 setisExist(true)
-                navigete("/home")
+                insert=true
+                navigate('/home', { replace: true })
+                // navigete("/home")
             }
                 
         }
-        if(isExist!==true){
+        if(insert!==true){
             setisExist(false)
             alert("user dose not exist");
         }
