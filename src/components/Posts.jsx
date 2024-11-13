@@ -1,15 +1,4 @@
 import React from "react";
-<<<<<<< HEAD
-
-function Posts(){
-
-return(
-    <>
-    </>
-)
-}
-export default Posts
-=======
 function Posts(){
 
     return(
@@ -19,4 +8,3 @@ function Posts(){
     )
 }
 export default Posts;
->>>>>>> 8f1ffb165ffa48c516f798962200ba262afaf64a

@@ -1,10 +1,6 @@
 import React from 'react'
 import './App.css'
-<<<<<<< HEAD
-import Register from './components/Register'
-import { Routes, Route } from 'react-router-dom'
 import MoreAboutUser from './components/MoreAboutUser'
-=======
 import { Link, Route,Routes } from 'react-router-dom'
 import Login from './components/Login'
 import Home from './components/Home'
@@ -19,20 +15,11 @@ import Notfound from './components/Notfound'
 
 
 
->>>>>>> 8f1ffb165ffa48c516f798962200ba262afaf64a
 
 function App() {
 
   return (
     <>
-<<<<<<< HEAD
-     <Routes>
-      <Route path='/' element={<Register/>}></Route>
-      <Route path='/moreaboutuser' element={<MoreAboutUser/>}></Route>
-    </Routes> 
-
-      
-=======
     
     <Routes>
         <Route path='/' element={<Login />}/>
@@ -44,11 +31,11 @@ function App() {
         <Route path='/info' element={<Info/>}/>
         <Route path='/comments' element={<Comments/>}/>
         <Route path='/albums' element={<Albums/>}/>
+        <Route path='/moreaboutuser' element={<MoreAboutUser/>}></Route>
         <Route path='*' element={<Notfound/>}/>
     </Routes>
 
      
->>>>>>> 8f1ffb165ffa48c516f798962200ba262afaf64a
     </>
   )
 }
