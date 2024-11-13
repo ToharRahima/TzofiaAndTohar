@@ -3,7 +3,7 @@ function Notfound(){
 
     return(
         <>
-            <h1>the page not existe </h1>
+            <h1 style={{fontWeight:"bold"}}>the page not existe </h1>
         </>
     )
 }

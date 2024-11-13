@@ -4,7 +4,7 @@ import { Link, Route,Routes, useNavigate } from 'react-router-dom'
 
 
 function Login() {
-    const [isExist,setisExist]=useState(false)
+    const [isExist,setisExist]=useState()
     const [inputs, setInputs] = useState({});
     const [usersArr,setusersArr]=useState([]);
     const navigate= useNavigate();
@@ -21,7 +21,6 @@ function Login() {
             if(!inArr){
                 logedUsers.push(user); 
                 localStorage.setItem("logedUsers", JSON.stringify(logedUsers)); 
-                // localStorage.setItem("logedUsers",JSON.stringify(logedUsers.push(user)))
             }
         } else{
             localStorage.setItem("logedUsers",JSON.stringify([user]))
@@ -41,11 +40,6 @@ function Login() {
         (async ()=> await fetchItem())();
     },[])
 
-    // useEffect(()=>{
-    //     if(isExist){
-    //         navigate('/home', { replace: true })
-    //     }
-    // },[])
 
     const handleChange = (event) => {
         const name = event.target.name;
@@ -64,7 +58,6 @@ function Login() {
                 setisExist(true)
                 insert=true
                 navigate('/home', { replace: true })
-                // navigete("/home")
             }
                 
         }
@@ -86,8 +79,7 @@ function Login() {
                         value={inputs.username || ""}
                         onChange={handleChange}
                         required
-                        // minlength="2"
-                        // maxlength="15"
+                        
                     />
                 </label>
                 <br></br>
@@ -99,8 +91,6 @@ function Login() {
                         value={inputs.password || ""}
                         onChange={handleChange}
                         required
-                        // minlength="2"
-                        // maxlength="15"
                     />
                 </label>
                 <br></br>

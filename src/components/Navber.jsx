@@ -17,8 +17,11 @@ function Navber(){
         navigate("/albums")
     }
     const logout=()=>{
-        localStorage.setItem("currentUser",JSON.stringify(" "));
+        localStorage.setItem("currentUser",JSON.stringify(null));
         navigate('/', { replace: true })
+        history.pushState(null, null, "/");
+        window.onpopstate = function(event) {
+          history.go(1);}
     }
 
     return(
