@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import ToDoCard from "./ToDoCard";
 import { useState } from "react";
+import Navber from "./Navber";
 
 function Todos(){
     
@@ -48,6 +49,7 @@ const data= localStorage.getItem("currentUser");
     return(
         <>
             <h1>Todos</h1>
+            <Navber/>
             <label>sort by:</label>
             <select>
                 <option option value="number">number</option>

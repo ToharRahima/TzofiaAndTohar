@@ -2,24 +2,16 @@ import React, { useState } from "react";
 import Navber from "./Navber";
 import { useEffect } from "react";
 function Home() {
-
-const[userInfo, setUserInfo]=useState ();  
-
-useEffect( () => {
-    async function bringsuserinfo(){
-const response=await fetch('http://localhost:3500/users');
-const usersArr=await response.json();
-setUserInfo(usersArr)
-}
-
-bringsuserinfo();
-} ,[])
-    
-return (
+    const currentser=JSON.parse(localStorage.getItem("currentUser"));
+    let name= currentser.name;
+    return (
         <>
             <h1>Home</h1>
             <Navber />
-            <div></div>
+            <br/>
+            <h2>hello {name}!</h2>
+            
+
         </>
     )
 }
