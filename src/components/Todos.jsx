@@ -22,18 +22,11 @@ const data= localStorage.getItem("currentUser");
         const newToDo={"userId":userId,
                         "title": inputvalue
                      }
-        setToDoId((toDoId)=>toDoId+1);
         fetch(`http://localhost:3500/todos/`,{method:'POST' ,
              headers: { 'Content-Type': 'application/json' },
              body: JSON.stringify(newToDo)})
-            
-            //  .then((res)=>res.json())
-            //  .then((data)=>console.log(data))
-            //  .then ((data)=>props.setToDoArr((prev)=>prev.map(todo=> {if(todo.id==props.todo.id){todo.title=data.title}return todo})))
-            //  .then(()=>setIsInputOpen(false))
-    }
-    function handleChange(){
-
+            .then((res)=>res.json())
+            .then ((data)=>setToDoArr((prev)=>[...prev,data] ))
     }
     
 
@@ -63,8 +56,8 @@ const data= localStorage.getItem("currentUser");
             {isInputOpen&& 
             <>
             <input onChange={(e)=>setInputValue(e.target.value)}></input>
-            {/* <button onClick={()=>{addToDoCard(); setIsInputOpen(false)}}>submit</button> */}
-            <button >submit</button>
+            <button onClick={()=>{addToDoCard(); setIsInputOpen(false)}}>submit</button>
+            {/* <button >submit</button> */}
             </>}
             
         </>
