@@ -89,6 +89,7 @@ function Posts(){
         })
         .catch((error)=>console.log("error delating post",error))
     }
+    
     const endEdit=(id,userid)=>{
         
         const data = {

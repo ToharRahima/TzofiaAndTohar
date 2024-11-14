@@ -32,7 +32,7 @@ function Comments(props){
 
     const erase=(id)=>{
         sete(!er)
-        fetch(`http://localhost:3500/comments/${id}`,{
+        fetch(`http://localhost:3500/photos/${id}`,{
             method: "DELETE"
         })
         .then((response)=>{
@@ -165,7 +165,7 @@ function Comments(props){
             </div>
         );
       }
-      
+
       function handleSubmit(event){
         event.preventDefault();
     }

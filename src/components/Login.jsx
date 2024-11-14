@@ -57,7 +57,7 @@ function Login() {
                 alert("hi "+ inputs.username )
                 setisExist(true)
                 insert=true
-                navigate('/home', { replace: true })
+                navigate(`/${usersArr[i].id}/home`, { replace: true })
             }
                 
         }

@@ -2,19 +2,21 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 function Navber(){
 
+    const currentUser=JSON.parse(localStorage.getItem("currentUser"))
+
     const navigate=useNavigate();
 
     const todos=()=>{
-        navigate("/todos")
+        navigate(`/${currentUser.id}/todos`)
     }
     const info=()=>{
-        navigate("/info")
+        navigate(`/${currentUser.id}/info`)
     }
     const posts=()=>{
-        navigate("/posts")
+        navigate(`/${currentUser.id}/posts`)
     }
     const albums=()=>{
-        navigate("/albums")
+        navigate(`/${currentUser.id}/albums`)
     }
     const logout=()=>{
         localStorage.setItem("currentUser",JSON.stringify(null));

@@ -23,15 +23,15 @@ function App() {
     
     <Routes>
         <Route path='/' element={<Login />}/>
-        <Route path='/home' element={<Home/>}/>
+        <Route path='/:id/home' element={<Home/>}/>
         <Route path='/register' element={<Register/>}/>
-        <Route path='/todos' element={<Todos/>}/>
-        <Route path='/posts' element={<Posts/>}/>
-        <Route path='/photos' element={<Photos/>}/>
-        <Route path='/info' element={<Info/>}/>
+        <Route path='/:id/todos' element={<Todos/>}/>
+        <Route path='/:id/posts' element={<Posts/>}/>
+        <Route path='/:id/photos' element={<Photos/>}/>
+        <Route path='/:id/info' element={<Info/>}/>
         <Route path='/comments' element={<Comments/>}/>
-        <Route path='/albums' element={<Albums/>}/>
-        <Route path='/moreaboutuser' element={<MoreAboutUser/>}></Route>
+        <Route path='/:id/albums' element={<Albums/>}/>
+        <Route path='/:id/moreaboutuser' element={<MoreAboutUser/>}></Route>
         <Route path='*' element={<Notfound/>}/>
     </Routes>
 
