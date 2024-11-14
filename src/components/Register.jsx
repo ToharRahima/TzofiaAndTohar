@@ -8,7 +8,10 @@ function Register() {
     const [inputs, setInputs] = useState({});
     const [currentError, setCurrentError] = useState("");
     const navigate= useNavigate();
+    // const [newUserId, setNewUserId]=useState(6);
 
+    // const generateId=()=>{setNewUserId(newUserId+1)};   
+    
     const handleChange = (e) => {
         setInputs((prev) => {
             console.log({ ...prev, [e.target.name]: e.target.value })
@@ -28,24 +31,30 @@ function Register() {
             const res = await fetch("http://localhost:3500/users");
             const usersArr = await res.json()
             console.log(usersArr);
-            const userexists = usersArr.some(user => user.username === inputs.username)
+            const userexists = usersArr.some(user => user.username === inputs.username);
             if (userexists) { throw "user allready exists" }
             else {
-                setCurrentError("")
-                fetch('http://localhost:3500/users', {
+                setCurrentError("");
+                // generateId();
+                // console.log(newUserId)
+               const data =await fetch('http://localhost:3500/users', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json;charset=utf-8'
                     },
                     body: JSON.stringify({
                         username: inputs.username,
-                        password: inputs.password
-                    })
-                })
-             navigate('/moreaboutuser')   
-            }
+                        website: inputs.password,
+                        
 
-        } catch (error) {
+                        })
+                    });
+                    const user= await data.json();
+                    console.log(user)
+                    localStorage.setItem("currentUser",JSON.stringify(user))
+                }
+             navigate('/moreaboutuser')   
+            }catch (error) {
             console.log(error)
             setCurrentError(error)
         }
@@ -64,12 +73,15 @@ function Register() {
                 <label>user name:
                     <input type="text" name="username" onChange={handleChange}></input>
                 </label>
+                <br/>
                 <label>password:
                     <input type="text" name="password" onChange={handleChange}></input>
                 </label>
+                <br/>
                 <label>verify password:
                     <input type="text" name="verifypassword" onChange={handleChange}></input>
                 </label>
+                <br/>
                 <input type="submit" onClick={handleSubmit}></input>
             </form>
             <p style={{color:"red"}}>{currentError}</p>
