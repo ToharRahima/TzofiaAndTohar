@@ -9,6 +9,17 @@ function Todos(){
 const[toDoArr,setToDoArr]=useState([]);
 const[isInputOpen, setIsInputOpen]=useState(false)
 const[inputvalue, setInputValue]=useState("");
+const [inputs, setInputs] = useState({serch:''});
+
+function handleSubmit(event){
+    event.preventDefault();
+}
+
+const handleChange = (event) => {
+    const name = event.target.name;
+    const value = event.target.value;
+    setInputs(values => ({ ...values, [name]: value }))
+}
 
 const data= localStorage.getItem("currentUser");
     console.log(data);
@@ -32,9 +43,9 @@ const data= localStorage.getItem("currentUser");
             //  .then ((data)=>props.setToDoArr((prev)=>prev.map(todo=> {if(todo.id==props.todo.id){todo.title=data.title}return todo})))
             //  .then(()=>setIsInputOpen(false))
     }
-    function handleChange(){
+    // function handleChange(){
 
-    }
+    // }
     
 
     useEffect(()=>{async function bringsUserToDos(userId){
@@ -50,6 +61,21 @@ const data= localStorage.getItem("currentUser");
         <>
             <h1>Todos</h1>
             <Navber/>
+            <br/><br/>
+            <form>
+            <label>
+                    <input
+                        placeholder="serch"
+                        type="text"
+                        name="serch"
+                        value={inputs.serch || ""}
+                        onChange={handleChange}
+                        required
+                    />
+                </label>
+                <input type="submit" onClick={handleSubmit}/>
+            </form>
+            <br/><br/>
             <label>sort by:</label>
             <select>
                 <option option value="number">number</option>
@@ -57,7 +83,8 @@ const data= localStorage.getItem("currentUser");
                 <option option value="done">done</option>
                 <option option value="random">random</option>
             </select>
-            {toDoArr.map((todo)=>{return <ToDoCard todo={todo} setToDoArr={setToDoArr} key={todo.id}/>
+            <br/>
+            {toDoArr.filter((item)=>item.title.includes(inputs.serch)).map((todo)=>{return <ToDoCard todo={todo} setToDoArr={setToDoArr} key={todo.id}/>
             })}
             <button onClick={()=>setIsInputOpen(true)}>add</button>
             {isInputOpen&& 
